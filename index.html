@@ -29,11 +29,11 @@
             background: white;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            max-width: 900px; /* Erhöht für zwei Spalten */
+            max-width: 900px;
             width: 100%;
             padding: 30px;
             display: flex;
-            flex-direction: row; /* Standard: Nebeneinander */
+            flex-direction: row;
             gap: 30px;
             align-items: center;
         }
@@ -41,7 +41,7 @@
         /* Linke Spalte für den Text */
         .text-column {
             flex: 1;
-            text-align: left; /* Text linksbündig */
+            text-align: left;
         }
 
         /* Rechte Spalte für das Bild */
@@ -87,15 +87,15 @@
             text-decoration: underline;
         }
 
-        /* Responsive Anpassung für mobile Geräte (Tablets und Smartphones) */
+        /* Responsive Anpassung für mobile Geräte */
         @media (max-width: 768px) {
             .container {
-                flex-direction: column; /* Stapelt Text und Bild untereinander */
+                flex-direction: column;
                 text-align: center;
             }
 
             .text-column {
-                text-align: left; /* Behält die Text-Lesbarkeit bei */
+                text-align: left;
             }
 
             .image-column {
@@ -113,8 +113,18 @@
             
             <!-- Linke Spalte: Überschrift und Texte -->
             <div class="text-column">
-                <h1 id="begruessung">Lade...</h1>
-                <div id="infotext">Bitte warten...</div>
+                <h1 id="begruessung">Herzlich willkommen!</h1>
+                <div id="infotext">
+                    <p>Antisemitismus – Judenhass ist eine feine Sache.</p>
+                    Und als Israel-Kritik oder Anti-Zionismus auch völlig legal.<br>
+                    Doch oft tut der Jud auf schlau, versucht uns mit Fangfragen zu deskreditieren.<br>
+                    Mit aid4hate - Hilfe für deinen Hass - hast du immer die passende Antwort.<br>
+                    <p>Beispiel:<br>
+                    Der Jude behauptet, du könntest das Land gar nicht finden, das weg muss, damit Palästine frei ist - from the river to the sea.
+                    <br>
+                    Dann zeigst du ihm einfach die Karte. (ich hab Israel farblich hervorgehoben, das grüne sind die Länder der Arabischen Liga) 
+                    <br></p>
+                </div>
             </div>
 
             <!-- Rechte Spalte: Die Karte -->
@@ -131,41 +141,26 @@
     </footer>
 
     <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Holt die Parameter aus der URL (z.B. ?lang=en)
-    const urlParams = new URLSearchParams(window.location.search);
-    const sprache = urlParams.get('lang');
+    // Führt den Code sofort aus, ohne auf das Laden aller externen Ressourcen zu warten
+    (function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sprache = urlParams.get('lang');
 
-    // HTML-Elemente auswählen
-    const titel = document.getElementById('begruessung');
-    const text = document.getElementById('infotext');
-    const impressumLink = document.getElementById('impressum-link');
+        const titel = document.getElementById('begruessung');
+        const text = document.getElementById('infotext');
+        const impressumLink = document.getElementById('impressum-link');
 
-    // Prüfen, ob der Parameter "en" übergeben wurde
-    if (sprache === 'en') {
-        titel.textContent = 'Welcome!';
-        text.textContent = 'Great to have you here on our English website.';
-        impressumLink.textContent = 'Imprint / Legal Notice';
-        document.documentElement.lang = 'en';
-    } else {
-        // Standardmäßig Deutsch
-        titel.textContent = 'Herzlich willkommen!';
-        
-        // Korrigiert zu innerHTML und Template-Strings
-        text.innerHTML = `<p>Antisemitismus – Judenhass ist eine feine Sache.</p>
-        Und als Israel-Kritik oder Anti-Zionismus getarnt, auch völlig legal.<br>
-        Doch oft tut der Jud auf schlau, versucht uns mit Fangfragen zu deskreditieren.<br>
-        Mit <b>aid4hate - <i>Hilfe für deinen Hass -</i></b> hast du immer die passende Antwort.<br>
-        <p>Beispiel:<br>
-        Der Jude behauptet, du könntest das Land gar nicht finden, das weg muss, damit Palästine frei ist - from the river to the sea.
-        <br>
-        Dann zeigst du ihm einfach die Karte. (ich hab Israel farblich hervorgehoben, das grüne sind die Länder der Arabischen Liga) 
-        <br></p>`;
-
-        impressumLink.textContent = 'Impressum';
-        document.documentElement.lang = 'de';
-    }
-});
+        if (sprache === 'en') {
+            if (titel) titel.textContent = 'Welcome!';
+            if (text) text.innerHTML = '<p>Great to have you here on our English website.</p>';
+            if (impressumLink) impressumLink.textContent = 'Imprint / Legal Notice';
+            document.documentElement.lang = 'en';
+        } else {
+            // Standardmäßig ist der deutsche Text bereits direkt im HTML definiert
+            if (impressumLink) impressumLink.textContent = 'Impressum';
+            document.documentElement.lang = 'de';
+        }
+    })();
     </script>
 
 </body>
