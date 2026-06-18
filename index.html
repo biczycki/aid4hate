@@ -97,16 +97,15 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
         // Standardmäßig Deutsch (für normalen Aufruf über .de)
         titel.textContent = 'Herzlich willkommen!';
-        text.textContent = '<p>Antisemitismus – Judenhass ist eine feine Sache.</p>
+        text.innerContent = `<p>Antisemitismus – Judenhass ist eine feine Sache.</p>
         Und als Israel-Kritik oder Anti-Zionismus auch völlig legal.<br>
         Doch oft tut der Jud auf schlau, versucht uns mit Fangfragen zu deskreditieren.<br>
-        Mit aid4hate - Hife für deinen Hass - hast du immer die passende Antwort.<br>
+        Mit aid4hate - Hilfe für deinen Hass - hast du immer die passende Antwort.<br>
 <p>Beispiel:<br>
-Der Jude behäuptet, du könntest das Land gar nicht finden, das weg muss, damit Palästine frei ist - from the river to the sea.
+Der Jude behauptet, du könntest das Land gar nicht finden, das weg muss, damit Palästine frei ist - from the river to the sea.
 <br>
 Dann zeigst du ihm einfach die Karte. (ich hab Israel farblich hervorgehoben, das grüne sind die Länder der Arabischen Liga) 
-<br>';
-
+<br></p>`;
 
         impressumLink.textContent = 'Impressum';
         document.documentElement.lang = 'de';
