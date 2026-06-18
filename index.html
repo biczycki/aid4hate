@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>aid for your hate of Jews</title>
     <style>
-        /* Der Body dehnt sich über die volle Höhe aus und ordnet die Elemente untereinander an */
+        /* Basis-Layout für die gesamte Seite */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -15,7 +15,7 @@
             background-color: #f4f4f9;
         }
 
-        /* Der Inhaltsbereich wächst und zentriert die weiße Box perfekt in der Mitte */
+        /* Hauptbereich zentriert die Box auf dem Bildschirm */
         .main-content {
             flex: 1;
             display: flex;
@@ -24,23 +24,51 @@
             padding: 20px;
         }
 
+        /* Die weiße Box nutzt Flexbox für das Nebeneinander von Text und Bild */
         .container {
-            text-align: center;
-            padding: 30px;
             background: white;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            max-width: 500px;
+            max-width: 900px; /* Erhöht für zwei Spalten */
             width: 100%;
+            padding: 30px;
+            display: flex;
+            flex-direction: row; /* Standard: Nebeneinander */
+            gap: 30px;
+            align-items: center;
+        }
+
+        /* Linke Spalte für den Text */
+        .text-column {
+            flex: 1;
+            text-align: left; /* Text linksbündig */
+        }
+
+        /* Rechte Spalte für das Bild */
+        .image-column {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Macht das Bild vollkommen responsiv */
+        .map-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         h1 {
             color: #333;
-            margin-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 15px;
         }
 
         p {
             color: #666;
+            line-height: 1.5;
         }
 
         /* Das Impressum steht immer ganz unten am Seitenrand */
@@ -58,17 +86,42 @@
         .impressum-footer a:hover {
             text-decoration: underline;
         }
+
+        /* Responsive Anpassung für mobile Geräte (Tablets und Smartphones) */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stapelt Text und Bild untereinander */
+                text-align: center;
+            }
+
+            .text-column {
+                text-align: left; /* Behält die Text-Lesbarkeit bei */
+            }
+
+            .image-column {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Hauptbereich für die zentrierte Box -->
+    <!-- Hauptbereich -->
     <main class="main-content">
         <div class="container">
-            <!-- Hier wird die Begrüßung eingefügt -->
-            <h1 id="begruessung">Lade...</h1>
-            <!-- Hier wird der Zusatztext eingefügt -->
-            <p id="infotext">Bitte warten...</p>
+            
+            <!-- Linke Spalte: Überschrift und Texte -->
+            <div class="text-column">
+                <h1 id="begruessung">Lade...</h1>
+                <div id="infotext">Bitte warten...</div>
+            </div>
+
+            <!-- Rechte Spalte: Die Karte -->
+            <div class="image-column">
+                <img src="pics/map.png" alt="Karte" class="map-image">
+            </div>
+
         </div>
     </main>
 
@@ -92,20 +145,22 @@ document.addEventListener("DOMContentLoaded", function() {
     if (sprache === 'en') {
         titel.textContent = 'Welcome!';
         text.textContent = 'Great to have you here on our English website.';
-        impressumLink.textContent = 'Imprint / Legal Notice'; // Übersetzt den Link-Text
+        impressumLink.textContent = 'Imprint / Legal Notice';
         document.documentElement.lang = 'en';
     } else {
-        // Standardmäßig Deutsch (für normalen Aufruf über .de)
+        // Standardmäßig Deutsch
         titel.textContent = 'Herzlich willkommen!';
-        text.innerContent = `<p>Antisemitismus – Judenhass ist eine feine Sache.</p>
-        Und als Israel-Kritik oder Anti-Zionismus auch völlig legal.<br>
+        
+        // Korrigiert zu innerHTML und Template-Strings
+        text.innerHTML = `<p>Antisemitismus – Judenhass ist eine feine Sache.</p>
+        Und als Israel-Kritik oder Anti-Zionismus getarnt, auch völlig legal.<br>
         Doch oft tut der Jud auf schlau, versucht uns mit Fangfragen zu deskreditieren.<br>
-        Mit aid4hate - Hilfe für deinen Hass - hast du immer die passende Antwort.<br>
-<p>Beispiel:<br>
-Der Jude behauptet, du könntest das Land gar nicht finden, das weg muss, damit Palästine frei ist - from the river to the sea.
-<br>
-Dann zeigst du ihm einfach die Karte. (ich hab Israel farblich hervorgehoben, das grüne sind die Länder der Arabischen Liga) 
-<br></p>`;
+        Mit <b>aid4hate - <i>Hilfe für deinen Hass -</i></b> hast du immer die passende Antwort.<br>
+        <p>Beispiel:<br>
+        Der Jude behauptet, du könntest das Land gar nicht finden, das weg muss, damit Palästine frei ist - from the river to the sea.
+        <br>
+        Dann zeigst du ihm einfach die Karte. (ich hab Israel farblich hervorgehoben, das grüne sind die Länder der Arabischen Liga) 
+        <br></p>`;
 
         impressumLink.textContent = 'Impressum';
         document.documentElement.lang = 'de';
