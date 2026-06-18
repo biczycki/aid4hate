@@ -2,10 +2,67 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>dai4hate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aid for your hate of Jews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <h1>aid4hate</h1>
-    <p>Diese Seite läuft über GitHub Pages.</p>
+
+    <div class="container">
+        <!-- Hier wird die Begrüßung eingefügt -->
+        <h1 id="begruessung">Lade...</h1>
+        <!-- Hier wird der Zusatztext eingefügt -->
+        <p id="infotext">Bitte warten...</p>
+    </div>
+
+    <script>
+        // Funktion zur Anpassung der Sprache ausführen, sobald die Seite lädt
+        document.addEventListener("DOMContentLoaded", function() {
+            // Aktuelle Domain auslesen
+            const domain = window.location.hostname;
+            
+            // HTML-Elemente auswählen
+            const titel = document.getElementById('begruessung');
+            const text = document.getElementById('infotext');
+
+            // Domain prüfen und Texte anpassen
+            if (domain.endsWith('.de')) {
+                titel.textContent = 'Herzlich willkommen!';
+                text.textContent = 'Schön, dass du uns auf der deutschen Webseite besuchst.';
+                document.documentElement.lang = 'de'; // Setzt das HTML-Sprachattribut
+            } else {
+                // Standard für .com und lokale Tests (localhost)
+                titel.textContent = 'Welcome!';
+                text.textContent = 'Great to have you here on our English website.';
+                document.documentElement.lang = 'en'; // Setzt das HTML-Sprachattribut
+            }
+        });
+    </script>
+
 </body>
 </html>
+
