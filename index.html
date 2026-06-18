@@ -5,39 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>aid for your hate of Jews</title>
     <style>
+        /* Der Body dehnt sich über die volle Höhe aus und ordnet die Elemente untereinander an */
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            flex-direction: column;
+            min-height: 100vh;
             margin: 0;
             background-color: #f4f4f9;
         }
+
+        /* Der Inhaltsbereich wächst und zentriert die weiße Box perfekt in der Mitte */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
         .container {
             text-align: center;
             padding: 30px;
             background: white;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
         }
+
         h1 {
             color: #333;
             margin-bottom: 10px;
         }
+
         p {
             color: #666;
+        }
+
+        /* Das Impressum steht immer ganz unten am Seitenrand */
+        .impressum-footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        .impressum-footer a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .impressum-footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Hier wird die Begrüßung eingefügt -->
-        <h1 id="begruessung">Lade...</h1>
-        <!-- Hier wird der Zusatztext eingefügt -->
-        <p id="infotext">Bitte warten...</p>
-    </div>
+    <!-- Hauptbereich für die zentrierte Box -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hier wird die Begrüßung eingefügt -->
+            <h1 id="begruessung">Lade...</h1>
+            <!-- Hier wird der Zusatztext eingefügt -->
+            <p id="infotext">Bitte warten...</p>
+        </div>
+    </main>
+
+    <!-- Impressum-Zeile ganz unten -->
+    <footer class="impressum-footer">
+        <a href="impressum.html" id="impressum-link">Impressum</a>
+    </footer>
 
     <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -48,22 +86,23 @@ document.addEventListener("DOMContentLoaded", function() {
     // HTML-Elemente auswählen
     const titel = document.getElementById('begruessung');
     const text = document.getElementById('infotext');
+    const impressumLink = document.getElementById('impressum-link');
 
     // Prüfen, ob der Parameter "en" übergeben wurde
     if (sprache === 'en') {
         titel.textContent = 'Welcome!';
         text.textContent = 'Great to have you here on our English website.';
+        impressumLink.textContent = 'Imprint / Legal Notice'; // Übersetzt den Link-Text
         document.documentElement.lang = 'en';
     } else {
         // Standardmäßig Deutsch (für normalen Aufruf über .de)
         titel.textContent = 'Herzlich willkommen!';
         text.textContent = 'Schön, dass du uns auf der deutschen Webseite besuchst.';
+        impressumLink.textContent = 'Impressum';
         document.documentElement.lang = 'de';
     }
 });
-
     </script>
 
 </body>
 </html>
-
