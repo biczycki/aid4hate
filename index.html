@@ -42,6 +42,8 @@
         .text-column {
             flex: 1;
             text-align: left;
+            color: #333333; /* Einheitliche Textfarbe für den gesamten Block */
+            line-height: 1.6;
         }
 
         /* Rechte Spalte für das Bild */
@@ -63,12 +65,7 @@
         h1 {
             color: #333;
             margin-top: 0;
-            margin-bottom: 15px;
-        }
-
-        p {
-            color: #666;
-            line-height: 1.5;
+            margin-bottom: 20px;
         }
 
         /* Das Impressum steht immer ganz unten am Seitenrand */
@@ -94,10 +91,6 @@
                 text-align: center;
             }
 
-            .text-column {
-                text-align: left;
-            }
-
             .image-column {
                 width: 100%;
                 margin-top: 20px;
@@ -111,20 +104,18 @@
     <main class="main-content">
         <div class="container">
             
-            <!-- Linke Spalte: Überschrift und Texte -->
+            <!-- Linke Spalte: Überschrift und formatierte Texte -->
             <div class="text-column">
-                <h1 id="begruessung">Herzlich willkommen!</h1>
-                <div id="infotext">
-                    <p>Antisemitismus – Judenhass ist eine feine Sache.</p>
-                    <p>Und als Israel-Kritik oder Anti-Zionismus auch völlig legal.<br>
-                    Doch oft tut der Jud auf schlau, versucht uns mit Fangfragen zu deskreditieren.</p>
-                    <p>Mit aid4hate - Hilfe für deinen Hass - hast du immer die passende Antwort.<br>
-                    Beispiel:<br>
-                    Der Jude behauptet, du könntest das Land gar nicht finden, das weg muss, damit Palästine frei ist - from the river to the sea.
-                    <br>
-                    Dann zeigst du ihm einfach die Karte. (ich hab Israel farblich hervorgehoben, das grüne sind die Länder der Arabischen Liga) 
-                    </p>
-                </div>
+                <h1>Herzlich willkommen!</h1>
+                
+                Antisemitismus – Judenhass ist eine feine Sache.<br>
+                Und als Israel-Kritik oder Anti-Zionismus auch völlig legal.<br>
+                Doch oft tut der Jud auf schlau, versucht uns mit Fangfragen zu deskreditieren.<br>
+                Mit <b>aid4hate</b> - Hilfe für deinen Hass - hast du immer die passende Antwort.<br>
+                <br>
+                <i>Beispiel:</i><br>
+                Der Jude behauptet, du könntest das Land gar nicht finden, das weg muss, damit Palästine frei ist - from the river to the sea.<br>
+                Dann zeigst du ihm einfach die Karte. (ich hab Israel farblich hervorgehoben, das grüne sind die Länder der Arabischen Liga)
             </div>
 
             <!-- Rechte Spalte: Die Karte -->
@@ -137,31 +128,8 @@
 
     <!-- Impressum-Zeile ganz unten -->
     <footer class="impressum-footer">
-        <a href="impressum.html" id="impressum-link">Impressum</a>
+        <a href="impressum.html">Impressum</a>
     </footer>
-
-    <script>
-    // Führt den Code sofort aus, ohne auf das Laden aller externen Ressourcen zu warten
-    (function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const sprache = urlParams.get('lang');
-
-        const titel = document.getElementById('begruessung');
-        const text = document.getElementById('infotext');
-        const impressumLink = document.getElementById('impressum-link');
-
-        if (sprache === 'en') {
-            if (titel) titel.textContent = 'Welcome!';
-            if (text) text.innerHTML = '<p>Great to have you here on our English website.</p>';
-            if (impressumLink) impressumLink.textContent = 'Imprint / Legal Notice';
-            document.documentElement.lang = 'en';
-        } else {
-            // Standardmäßig ist der deutsche Text bereits direkt im HTML definiert
-            if (impressumLink) impressumLink.textContent = 'Impressum';
-            document.documentElement.lang = 'de';
-        }
-    })();
-    </script>
 
 </body>
 </html>
