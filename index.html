@@ -40,27 +40,28 @@
     </div>
 
     <script>
-        // Funktion zur Anpassung der Sprache ausführen, sobald die Seite lädt
-        document.addEventListener("DOMContentLoaded", function() {
-            // Aktuelle Domain auslesen
-            const domain = window.location.hostname;
-            
-            // HTML-Elemente auswählen
-            const titel = document.getElementById('begruessung');
-            const text = document.getElementById('infotext');
+document.addEventListener("DOMContentLoaded", function() {
+    // Holt die Parameter aus der URL (z.B. ?lang=en)
+    const urlParams = new URLSearchParams(window.location.search);
+    const sprache = urlParams.get('lang');
 
-            // Domain prüfen und Texte anpassen
-            if (domain.endsWith('.de')) {
-                titel.textContent = 'Herzlich willkommen!';
-                text.textContent = 'Schön, dass du uns auf der deutschen Webseite besuchst.';
-                document.documentElement.lang = 'de'; // Setzt das HTML-Sprachattribut
-            } else {
-                // Standard für .com und lokale Tests (localhost)
-                titel.textContent = 'Welcome!';
-                text.textContent = 'Great to have you here on our English website.';
-                document.documentElement.lang = 'en'; // Setzt das HTML-Sprachattribut
-            }
-        });
+    // HTML-Elemente auswählen
+    const titel = document.getElementById('begruessung');
+    const text = document.getElementById('infotext');
+
+    // Prüfen, ob der Parameter "en" übergeben wurde
+    if (sprache === 'en') {
+        titel.textContent = 'Welcome!';
+        text.textContent = 'Great to have you here on our English website.';
+        document.documentElement.lang = 'en';
+    } else {
+        // Standardmäßig Deutsch (für normalen Aufruf über .de)
+        titel.textContent = 'Herzlich willkommen!';
+        text.textContent = 'Schön, dass du uns auf der deutschen Webseite besuchst.';
+        document.documentElement.lang = 'de';
+    }
+});
+
     </script>
 
 </body>
