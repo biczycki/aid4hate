@@ -1,10 +1,12 @@
 media:
-  input: 'images' # Ordner für Ihre Bilder
+  input: public/images
+  output: /images
+
 collections:
-  - id: posts
-    label: Beiträge
+  - id: pages
+    label: Seiten
     type: folder
-    path: 'posts' # Der genaue Ordnername auf GitHub
+    path: content
     format: md
     fields:
       - name: title
