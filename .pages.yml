@@ -1,6 +1,6 @@
 media:
-  input: biczycki/aid4hate
-  output: biczycki/aid4hate
+  input: biczycki/main/aid4hate
+  output: biczycki/main/aid4hate
 
 collections:
   - id: pages
