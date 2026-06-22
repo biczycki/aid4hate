@@ -1,6 +1,6 @@
 media:
-  input: public/images
-  output: /images
+  input: public/aid4hate
+  output: /aid4hate
 
 collections:
   - id: pages
