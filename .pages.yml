@@ -1,0 +1,15 @@
+media:
+  input: 'images' # Ordner für Ihre Bilder
+collections:
+  - id: posts
+    label: Beiträge
+    type: folder
+    path: 'posts' # Der genaue Ordnername auf GitHub
+    format: md
+    fields:
+      - name: title
+        label: Titel
+        type: string
+      - name: body
+        label: Inhalt
+        type: rich-text
