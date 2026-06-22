@@ -1,17 +1,13 @@
 media:
-  input: biczycki/main/aid4hate
-  output: biczycki/main/aid4hate
+  input: pics # Verweist auf Ihren bestehenden Ordner "pics"
 
-collections:
-  - id: pages
-    label: Seiten
-    type: folder
-    path: content
-    format: md
+content:
+  - name: homepage
+    label: Startseite (index.html)
+    type: file
+    path: index.html # Zeigt direkt auf Ihre index.html im Hauptverzeichnis
+    format: html
     fields:
-      - name: title
-        label: Titel
-        type: string
       - name: body
-        label: Inhalt
+        label: Inhalt der Webseite
         type: rich-text
